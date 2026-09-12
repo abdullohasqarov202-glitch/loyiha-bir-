@@ -10,77 +10,182 @@ require_once __DIR__ . '/includes/icons.php';
 
 /* =========================================================
    FOOD PHOTOS
+   HAR BIR MAHSULOT UCHUN ID BO'YICHA TURFA RASM
    ========================================================= */
 
-function food_photo(string $type): string
+function food_photo(string $type, int $id = 0): string
 {
     $photos = [
 
         // 🍔 BURGER
-        'burger' => 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=90',
+        'burger' => [
+            'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍕 PIZZA
-        'pizza' => 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=90',
+        'pizza' => [
+            'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍟 FRIES
-        'fries' => 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1000&q=90',
+        'fries' => [
+            'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🥤 DRINK
-        'drink' => 'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1000&q=90',
+        'drink' => [
+            'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1527761939622-933c9b0d4c88?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍗 CHICKEN
-        'chicken' => 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1000&q=90',
+        'chicken' => [
+            'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🌭 HOTDOG
-        'hotdog' => 'https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=1000&q=90',
+        'hotdog' => [
+            'https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1619740455993-9e612b1f9b8f?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1599599810694-57a3f0c7a5e7?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🌮 TACO
-        'taco' => 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1000&q=90',
+        'taco' => [
+            'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍝 PASTA
-        'pasta' => 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=90',
+        'pasta' => [
+            'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1556761223-4c4282c73f77?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍰 DESSERT
-        'dessert' => 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=90',
+        'dessert' => [
+            'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍩 DONUT
-        'donut' => 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1000&q=90',
+        'donut' => [
+            'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1556913396-7a94f636c0d9?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1533910534207-90f31029a78e?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🥗 SALAD
-        'salad' => 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=90',
+        'salad' => [
+            'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍨 ICE CREAM
-        'icecream' => 'https://images.unsplash.com/photo-1563805042-7684c019e11a?auto=format&fit=crop&w=1000&q=90',
+        'icecream' => [
+            'https://images.unsplash.com/photo-1563805042-7684c019e11a?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍹 COCKTAIL
-        'cocktail' => 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=90',
+        'cocktail' => [
+            'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // ☕ COFFEE
-        'coffee' => 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=90',
+        'coffee' => [
+            'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🥪 SANDWICH
-        'sandwich' => 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1000&q=90',
+        'sandwich' => [
+            'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1481070414801-51fd732d7184?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍖 MEAT
-        'meat' => 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=90',
+        'meat' => [
+            'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍳 BREAKFAST
-        'breakfast' => 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1000&q=90',
+        'breakfast' => [
+            'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1495214783159-3503fd1b572d?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🧀 CHEESE
-        'cheese' => 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=1000&q=90',
+        'cheese' => [
+            'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1505576633757-0ac1084af824?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🥞 PANCAKE
-        'pancake' => 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=1000&q=90',
+        'pancake' => [
+            'https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1554520735-0a6b8b6ce8b1?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🍚 RICE
-        'rice' => 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=90',
+        'rice' => [
+            'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=1000&q=90',
+        ],
 
         // 🥩 STEAK
-        'steak' => 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1000&q=90',
+        'steak' => [
+            'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=1000&q=90',
+            'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1000&q=90',
+        ],
     ];
 
-    return $photos[$type] ?? $photos['burger'];
+    $list = $photos[$type] ?? $photos['burger'];
+
+    /*
+     * Product ID asosida doim bir xil, lekin boshqa mahsulotga
+     * boshqa rasm chiqadi.
+     */
+    $index = $id > 0
+        ? ($id - 1) % count($list)
+        : 0;
+
+    return $list[$index];
 }
 
 
@@ -266,7 +371,9 @@ header {
 }
 
 
-/* HERO */
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
 
@@ -1192,6 +1299,7 @@ footer a:hover {
 
 /* =========================================================
    MOBILE
+   MATN AVVAL, RASM KEYIN
    ========================================================= */
 
 @media (max-width: 800px) {
@@ -1217,11 +1325,43 @@ footer a:hover {
     }
 
 
+    /* HERO MOBILE */
+
     .hero {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        gap: 28px !important;
 
         padding-top: 40px;
 
         padding-bottom: 50px;
+
+    }
+
+
+    .hero > div:first-child {
+
+        width: 100% !important;
+
+        order: 1 !important;
+
+    }
+
+
+    .hero-photo {
+
+        width: 100% !important;
+
+        order: 2 !important;
+
+        margin-top: 0 !important;
+
+        border-radius: 25px;
 
     }
 
@@ -1232,6 +1372,8 @@ footer a:hover {
 
         letter-spacing: -2.5px;
 
+        text-align: left;
+
     }
 
 
@@ -1239,14 +1381,23 @@ footer a:hover {
 
         font-size: 16px;
 
+        text-align: left;
+
     }
 
 
-    .hero-photo {
+    .hero-actions {
 
-        margin-top: 25px;
+        flex-wrap: wrap;
 
-        border-radius: 25px;
+    }
+
+
+    .hero-actions a {
+
+        width: 100%;
+
+        text-align: center;
 
     }
 
@@ -1257,6 +1408,8 @@ footer a:hover {
 
     }
 
+
+    /* MENU */
 
     .menu-grid {
 
@@ -1379,23 +1532,6 @@ footer a:hover {
         gap: 25px;
 
     }
-
-
-    .hero-actions {
-
-        flex-wrap: wrap;
-
-    }
-
-
-    .hero-actions a {
-
-        width: 100%;
-
-        text-align: center;
-
-    }
-
 
 }
 
@@ -1549,7 +1685,7 @@ html {
     <div class="hero-photo">
 
         <img
-            src="<?= e(food_photo('burger')) ?>"
+            src="<?= e(food_photo('burger', 1)) ?>"
             alt="SmashBite burger"
         >
 
@@ -1639,7 +1775,7 @@ html {
                             <div class="item-image">
 
                                 <img
-                                    src="<?= e(food_photo($p['icon'])) ?>"
+                                    src="<?= e(food_photo($p['icon'], (int) $p['id'])) ?>"
                                     alt="<?= e($p['name']) ?>"
                                     loading="lazy"
                                 >
@@ -1815,7 +1951,7 @@ html {
         <div class="about-visual">
 
             <img
-                src="<?= e(food_photo('fries')) ?>"
+                src="<?= e(food_photo('fries', 2)) ?>"
                 alt="Xrustall fri kartoshkasi"
                 loading="lazy"
             >
@@ -1846,7 +1982,7 @@ html {
     <div class="highlight-visual">
 
         <img
-            src="<?= e(food_photo('pizza')) ?>"
+            src="<?= e(food_photo('pizza', 1)) ?>"
             alt="Pepperoni pizza"
             loading="lazy"
         >
@@ -2315,21 +2451,33 @@ html {
                 <ul>
 
                     <li>
+
                         <a href="index.php#menu">
+
                             Menyu
+
                         </a>
+
                     </li>
 
                     <li>
+
                         <a href="book-table.php">
+
                             Joy band qilish
+
                         </a>
+
                     </li>
 
                     <li>
+
                         <a href="cart.php">
+
                             Savat
+
                         </a>
+
                     </li>
 
                 </ul>
@@ -2350,11 +2498,15 @@ html {
                 <ul>
 
                     <li>
+
                         +998 88 309 02 07
+
                     </li>
 
                     <li>
+
                         QOQON
+
                     </li>
 
                 </ul>
