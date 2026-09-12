@@ -15,7 +15,7 @@ require_once __DIR__ . '/includes/icons.php';
 
 function food_photo(string $type, int $id = 0): string
 {
-    $photos = [
+   
 
        $photos = [
 
