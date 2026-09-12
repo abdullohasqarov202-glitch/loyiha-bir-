@@ -5,7 +5,7 @@
 // Ubuntu/lokal serverda esa quyidagi standart qiymatlar orqali ishlaydi.
 // ============================================================
 
-define('DB_HOST', getenv('MYSQLHOST') ?: 'localhost');
+define('DB_NAME', getenv('MYSQL_DATABASE') ?: 'smashbite');
 define('DB_NAME', getenv('MYSQLDATABASE') ?: 'smashbite');
 define('DB_USER', getenv('MYSQLUSER') ?: 'smashbite_user');
 define('DB_PASS', getenv('MYSQLPASSWORD') ?: 'BU_YERGA_KUCHLI_PAROL_QOYING');
