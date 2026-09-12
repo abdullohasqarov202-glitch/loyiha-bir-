@@ -1,18 +1,13 @@
 <?php
-// ============================================================
-// SmashBite — konfiguratsiya fayli
-// Railway'da MUHIT O'ZGARUVCHILARI (environment variables) orqali,
-// Ubuntu/lokal serverda esa quyidagi standart qiymatlar orqali ishlaydi.
-// ============================================================
 
-define('DB_NAME', getenv('MYSQL_DATABASE') ?: 'smashbite');
-define('DB_NAME', getenv('MYSQLDATABASE') ?: 'smashbite');
-define('DB_USER', getenv('MYSQLUSER') ?: 'smashbite_user');
-define('DB_PASS', getenv('MYSQLPASSWORD') ?: 'BU_YERGA_KUCHLI_PAROL_QOYING');
-define('DB_PORT', getenv('MYSQLPORT') ?: '3306');
+// Railway MySQL
+define('DB_HOST', getenv('MYSQL_HOST') ?: getenv('MYSQLHOST') ?: 'localhost');
+define('DB_NAME', getenv('MYSQL_DATABASE') ?: getenv('MYSQLDATABASE') ?: 'smashbite');
+define('DB_USER', getenv('MYSQL_USER') ?: getenv('MYSQLUSER') ?: 'smashbite_user');
+define('DB_PASS', getenv('MYSQL_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: '');
+define('DB_PORT', getenv('MYSQL_PORT') ?: getenv('MYSQLPORT') ?: '3306');
 define('DB_CHARSET', 'utf8mb4');
 
 define('SESSION_NAME', 'smashbite_session');
 
-// --- To'lov sozlamalari (hozircha placeholder) ---
 define('PAYMENT_MODE', 'manual');
